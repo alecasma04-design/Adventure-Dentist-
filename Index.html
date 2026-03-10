@@ -13,212 +13,292 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦷</text></svg>">
 
 <style>
-:root{
---primary:#FF6B9A;
---secondary:#FFF0F5;
---accent:#2EC4B6;
---dark:#333333;
---light:#ffffff;
+:root {
+  --primary: #FF6B9A;
+  --primary-hover: #e8557f;
+  --secondary: #FFF0F5;
+  --accent: #2EC4B6;
+  --dark: #333333;
+  --light: #ffffff;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial, sans-serif;}
-
-body{
-background:var(--secondary);
-color:var(--dark);
-line-height:1.6;
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-section{
-padding:60px 20px;
-max-width:1100px;
-margin:auto;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--secondary);
+  color: var(--dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1,h2,h3{
-margin-bottom:20px;
+section {
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: auto;
 }
 
-p{
-margin-bottom:20px;
+h1, h2, h3 {
+  margin-bottom: 20px;
 }
 
-.hero{
-text-align:center;
-padding-top:80px;
+p {
+  margin-bottom: 20px;
 }
 
-.cta-whatsapp{
-display:block;
-text-align:center;
-background:var(--primary);
-color:#fff;
-padding:18px;
-border-radius:12px;
-text-decoration:none;
-font-weight:bold;
-margin:20px auto;
-max-width:500px;
-transition:0.3s;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
+/* ========== HERO ========== */
+.hero {
+  text-align: center;
+  padding-top: 80px;
 }
 
-.cta-whatsapp:hover{
-background:var(--accent);
-transform:translateY(-2px);
+/* ========== CTA WHATSAPP ========== */
+.cta-whatsapp {
+  display: block;
+  text-align: center;
+  background: var(--primary);
+  color: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 20px auto;
+  max-width: 500px;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.grid{
-display:grid;
-gap:20px;
+.cta-whatsapp:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
-.benefits{
-grid-template-columns:1fr;
+.cta-whatsapp:active {
+  transform: translateY(0);
 }
 
-.card{
-background:var(--light);
-padding:25px;
-border-radius:15px;
-box-shadow:0 4px 12px rgba(0,0,0,0.05);
-text-align:center;
+/* ========== GRID & CARDS ========== */
+.grid {
+  display: grid;
+  gap: 20px;
 }
 
-.steps{
-counter-reset:step;
+.benefits {
+  grid-template-columns: 1fr;
 }
 
-.step{
-margin-bottom:20px;
+.card {
+  background: var(--light);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.step::before{
-counter-increment:step;
-content:counter(step) ". ";
-font-weight:bold;
-color:var(--primary);
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 
-.price-box{
-background:var(--light);
-padding:30px;
-border-radius:15px;
-text-align:center;
-box-shadow:0 4px 12px rgba(0,0,0,0.08);
+/* ========== CÓMO FUNCIONA (lista ordenada) ========== */
+.steps {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
 }
 
-footer{
-background:#fff;
-padding:30px 20px;
-text-align:center;
-font-size:14px;
+.steps li {
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-footer a{
-color:var(--primary);
-text-decoration:none;
-margin:0 10px;
+.steps li::before {
+  counter-increment: step;
+  content: counter(step) ". ";
+  font-weight: bold;
+  color: var(--primary);
 }
 
-@media(min-width:768px){
-.benefits{
-grid-template-columns:repeat(3,1fr);
+/* ========== PRECIO ========== */
+.price-box {
+  background: var(--light);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
+
+/* ========== FOOTER ========== */
+footer {
+  background: #fff;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+footer a {
+  color: var(--primary);
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ========== SCROLL REVEAL ========== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (min-width: 768px) {
+  .benefits {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Centrar las 2 cards de la segunda fila */
+  .benefits .card:nth-child(4) {
+    grid-column: 1 / 2;
+    justify-self: center;
+    max-width: 100%;
+  }
+
+  .benefits .card:nth-child(5) {
+    grid-column: 2 / 4;
+    justify-self: center;
+    max-width: 100%;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- ===== HERO ===== -->
 <section class="hero">
-<h1>🦷 Adventure Dentist</h1>
-<p>La app interactiva que convierte el cepillado dental en una aventura divertida para tus hijos.</p>
+  <h1>🦷 Adventure Dentist</h1>
+  <p>La app interactiva que convierte el cepillado dental en una aventura divertida para tus hijos.</p>
 
-<a href="https://wa.me/524494919794?text=Hola%2C%20me%20interesa%20Adventure%20Dentist.%20Me%20gustar%C3%ADa%20probar%20la%20versi%C3%B3n%20gratuita%20y%20recibir%20m%C3%A1s%20informaci%C3%B3n." 
-class="cta-whatsapp" target="_blank">
-📱 Quiero Probar Adventure Dentist
-</a>
+  <a href="https://wa.me/524494919794?text=Hola%2C%20me%20interesa%20Adventure%20Dentist.%20Me%20gustar%C3%ADa%20probar%20la%20versi%C3%B3n%20gratuita%20y%20recibir%20m%C3%A1s%20informaci%C3%B3n."
+     class="cta-whatsapp" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp para probar Adventure Dentist">
+    📱 Quiero Probar Adventure Dentist
+  </a>
 </section>
 
+<!-- ===== PROBLEMA ===== -->
 <section>
-<h2>El Problema</h2>
-<p>Muchos niños no quieren cepillarse o lo hacen incorrectamente. Esto genera estrés en los padres y aumenta el riesgo de caries y problemas dentales.</p>
-<p>La mayoría de las herramientas actuales no logran motivar a los niños de forma divertida.</p>
+  <h2 class="reveal">El Problema</h2>
+  <p class="reveal">Muchos niños no quieren cepillarse o lo hacen incorrectamente. Esto genera estrés en los padres y aumenta el riesgo de caries y problemas dentales.</p>
+  <p class="reveal">La mayoría de las herramientas actuales no logran motivar a los niños de forma divertida.</p>
 </section>
 
+<!-- ===== BENEFICIOS ===== -->
 <section>
-<h2>¿Por qué Adventure Dentist?</h2>
-<div class="grid benefits">
+  <h2 class="reveal">¿Por qué Adventure Dentist?</h2>
+  <div class="grid benefits">
 
-<div class="card">
-<h3>🎮 Juegos Interactivos</h3>
-<p>Convierte el cepillado en una actividad divertida.</p>
-</div>
+    <div class="card reveal">
+      <h3>🎮 Juegos Interactivos</h3>
+      <p>Convierte el cepillado en una actividad divertida.</p>
+    </div>
 
-<div class="card">
-<h3>😁 Menos Estrés</h3>
-<p>Reduce la resistencia de los niños al cepillado.</p>
-</div>
+    <div class="card reveal">
+      <h3>😁 Menos Estrés</h3>
+      <p>Reduce la resistencia de los niños al cepillado.</p>
+    </div>
 
-<div class="card">
-<h3>🦷 Prevención</h3>
-<p>Ayuda a evitar caries y problemas dentales.</p>
-</div>
+    <div class="card reveal">
+      <h3>🦷 Prevención</h3>
+      <p>Ayuda a evitar caries y problemas dentales.</p>
+    </div>
 
-<div class="card">
-<h3>👨‍👩‍👧 Apoyo a Padres</h3>
-<p>Seguimiento del progreso del cepillado.</p>
-</div>
+    <div class="card reveal">
+      <h3>👨‍👩‍👧 Apoyo a Padres</h3>
+      <p>Seguimiento del progreso del cepillado.</p>
+    </div>
 
-<div class="card">
-<h3>📈 Acceso Fácil</h3>
-<p>Versión gratuita y plan premium accesible.</p>
-</div>
+    <div class="card reveal">
+      <h3>📈 Acceso Fácil</h3>
+      <p>Versión gratuita y plan premium accesible.</p>
+    </div>
 
-</div>
+  </div>
 
-<a href="https://wa.me/524494919794?text=Hola%2C%20me%20interesa%20Adventure%20Dentist.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n." 
-class="cta-whatsapp" target="_blank">
-💬 Recibir Información por WhatsApp
-</a>
-
+  <a href="https://wa.me/524494919794?text=Hola%2C%20me%20interesa%20Adventure%20Dentist.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n."
+     class="cta-whatsapp" target="_blank" rel="noopener" aria-label="Recibir información de Adventure Dentist por WhatsApp">
+    💬 Recibir Información por WhatsApp
+  </a>
 </section>
 
+<!-- ===== CÓMO FUNCIONA ===== -->
 <section>
-<h2>¿Cómo Funciona?</h2>
-<p class="step">Descarga la app.</p>
-<p class="step">El niño aprende mientras juega.</p>
-<p class="step">Obtiene recompensas por cepillarse.</p>
-<p class="step">Los padres ven el progreso.</p>
+  <h2 class="reveal">¿Cómo Funciona?</h2>
+  <ol class="steps reveal">
+    <li>Descarga la app.</li>
+    <li>El niño aprende mientras juega.</li>
+    <li>Obtiene recompensas por cepillarse.</li>
+    <li>Los padres ven el progreso.</li>
+  </ol>
 </section>
 
+<!-- ===== PRECIO ===== -->
 <section>
-<h2>Precio</h2>
-<div class="price-box">
-<p><strong>Versión gratuita disponible</strong></p>
-<p>Premium desde <strong>$30–$60 MXN / mes</strong></p>
-<p>Pago único opcional <strong>$80–$100 MXN</strong></p>
-</div>
+  <h2 class="reveal">Precio</h2>
+  <div class="price-box reveal">
+    <p><strong>Versión gratuita disponible</strong></p>
+    <p>Premium desde <strong>$30–$60 MXN / mes</strong></p>
+    <p>Pago único opcional <strong>$80–$100 MXN</strong></p>
+  </div>
 </section>
 
+<!-- ===== CTA FINAL ===== -->
 <section style="text-align:center;">
-<h2>🚨 Cupos limitados para familias beta</h2>
-<p>Solo 20 familias podrán probar primero la app.</p>
+  <h2 class="reveal">🚨 Cupos limitados para familias beta</h2>
+  <p class="reveal">Solo 20 familias podrán probar primero la app.</p>
 
-<a href="https://wa.me/524494919794?text=Hola%2C%20quiero%20participar%20en%20Adventure%20Dentist." 
-class="cta-whatsapp" target="_blank">
-📱 Reservar mi lugar
-</a>
+  <a href="https://wa.me/524494919794?text=Hola%2C%20quiero%20participar%20en%20Adventure%20Dentist."
+     class="cta-whatsapp" target="_blank" rel="noopener" aria-label="Reservar lugar en Adventure Dentist por WhatsApp">
+    📱 Reservar mi lugar
+  </a>
 </section>
 
+<!-- ===== FOOTER ===== -->
 <footer>
-<p>Contacto:</p>
-<a href="mailto:adventuredentist@email.com">Email</a>
-<a href="https://instagram.com/adventuredentist" target="_blank">Instagram</a>
-<a href="https://facebook.com/adventuredentist" target="_blank">Facebook</a>
-<p>© 2026 Adventure Dentist</p>
+  <p>Contacto:</p>
+  <a href="mailto:adventuredentist@email.com">Email</a>
+  <a href="https://instagram.com/adventuredentist" target="_blank" rel="noopener">Instagram</a>
+  <a href="https://facebook.com/adventuredentist" target="_blank" rel="noopener">Facebook</a>
+  <p style="margin-top:12px;">©️ 2026 Adventure Dentist</p>
 </footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  // Scroll Reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
